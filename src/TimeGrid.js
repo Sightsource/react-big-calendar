@@ -208,24 +208,26 @@ export default class TimeGrid extends Component {
           onDrillDown={this.props.onDrillDown}
           getDrilldownView={this.props.getDrilldownView}
         />
-        <div
-          ref="content"
-          className="rbc-time-content"
-          onScroll={this.handleScroll}
-        >
-          <TimeGutter
-            date={start}
-            ref={this.gutterRef}
-            localizer={localizer}
-            min={dates.merge(start, min)}
-            max={dates.merge(start, max)}
-            step={this.props.step}
-            getNow={this.props.getNow}
-            timeslots={this.props.timeslots}
-            components={components}
-            className="rbc-time-gutter"
-          />
-          {this.renderEvents(range, rangeEvents, getNow())}
+        <div className="rbc-time-content-container">
+          <div
+            ref="content"
+            className="rbc-time-content"
+            onScroll={this.handleScroll}
+          >
+            <TimeGutter
+              date={start}
+              ref={this.gutterRef}
+              localizer={localizer}
+              min={dates.merge(start, min)}
+              max={dates.merge(start, max)}
+              step={this.props.step}
+              getNow={this.props.getNow}
+              timeslots={this.props.timeslots}
+              components={components}
+              className="rbc-time-gutter"
+            />
+            {this.renderEvents(range, rangeEvents, getNow())}
+          </div>
         </div>
       </div>
     )
